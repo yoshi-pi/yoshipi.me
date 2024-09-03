@@ -1,0 +1,150 @@
+body {
+  font-family: 'Inter', 'Noto Sans JP', sans-serif;
+  background-color: #303e4e;
+  color: white;
+  max-width: 800px;
+  padding: 60px 0 80px 15.6%;
+}
+.profile-container {
+  height: 250px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+.logo {
+  position: absolute;
+  top: 30px;
+  width: 64px;
+  height: 64px;
+}
+path {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+}
+.path-logo1 {
+  transition: stroke-dashoffset 0.5s ease-out;
+}
+.path-logo2 {
+  transition: stroke-dashoffset 0.7s ease-out 0.5s;
+}
+.path-logo3 {
+  transition: stroke-dashoffset 1s ease-out 1.2s;
+}
+.path-logo4 {
+  transition: stroke-dashoffset 1s ease-out 2.2s;
+}
+.path-logo1-reverse {
+  transition-delay: 1.2s;
+  transition-duration: 0.2s;
+}
+.path-logo2-reverse {
+  transition-delay: 0.9s;
+  transition-duration: 0.3s;
+}
+.path-logo3-reverse {
+  transition-delay: 0.5s;
+  transition-duration: 0.4s;
+}
+.path-logo4-reverse {
+  transition-delay: 0s;
+  transition-duration: 0.5s;
+}
+.profile-name {
+  font-size: 2.5rem;
+}
+.profile-image-container {
+  border-radius: 50%;
+  background: linear-gradient(319deg, #34d43a, #f9ca24);
+  padding: 5px;
+  width: 150px;
+  height: 150px;
+  margin-left: 120px;
+}
+.profile-image {
+  width: 100%;
+  border-radius: 50%;
+}
+section {
+  margin-bottom: 32px;
+}
+h2 {
+  font-size: 1.2rem;
+  margin-bottom: 8px;
+}
+p {
+  margin: 0;
+}
+a {
+  color: #70f5cc;
+  text-decoration-color: transparent;
+  transition: text-decoration-color 0.3s;
+}
+a:hover {
+  text-decoration-color: #70f5cc;
+}
+button {
+  padding: 0;
+  border: none;
+  outline: none;
+  font: inherit;
+  color: inherit;
+  background: none;
+}
+footer {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.6);
+  display: flex;
+  margin-top: 64px;
+}
+
+@media (width <= 1163px) {
+  body {
+    padding: 20px 0 40px 7.8%;
+  }
+  .profile-container {
+    margin-top: 40px;
+    padding-top: 24px;
+    height: 100px;
+    position: static;
+  }
+  .logo {
+    width: 40px;
+    height: 40px;
+  }
+  .profile-name {
+    font-size: 1.8rem;
+  }
+  .profile-image-container {
+    padding: 3px;
+    width: 65px;
+    height: 65px;
+    margin-left: 30px;
+  }
+}
+
+@media (width <= 962px) {
+  body {
+    padding: 20px 28px 40px 28px;
+  }
+}
+@media (width <= 410px) {
+  body {
+    padding: 10px 14px 20px 14px;
+  }
+  .profile-name {
+    font-size: 1.5rem;
+  }
+  .profile-image-container {
+    width: 60px;
+    height: 60px;
+  }
+}
+@media (width <= 364px) {
+  .profile-name {
+    font-size: 1.3rem;
+  }
+  h2 {
+    font-size: 1.1rem;
+  }
+}
