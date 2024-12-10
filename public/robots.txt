@@ -1,0 +1,1 @@
+sitemap: https://yoshipi.me/sitemap.xml
