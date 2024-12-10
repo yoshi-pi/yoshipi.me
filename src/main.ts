@@ -1,4 +1,5 @@
 import './style.css';
+import profileImage from './img/profile.jpg';
 
 import { getLocalizedMessages } from './i18n';
 import { handleLanguageRouting } from './handleLanguageRouting';
@@ -57,7 +58,7 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
         <div class="profile-image-container">
           <img
             class="profile-image"
-            src="./src/img/profile.jpg"
+            src="${profileImage}"
             alt="profile"
             width="150"
             height="150"
