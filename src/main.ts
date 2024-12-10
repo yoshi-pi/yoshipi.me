@@ -97,7 +97,7 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
       </section>
     </main>
     <footer>
-      <p>© <span class="year"></span> yoshipi</p>
+      <small>© <span class="year"></span> yoshipi</small>
     </footer>
 `;
 
