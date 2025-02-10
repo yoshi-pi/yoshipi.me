@@ -75,8 +75,7 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
       <section>
         <h2>🎨 Productions</h2>
         <p>
-          <a href="https://jsontocsvconv.com/">json to csv</a> /
-          <a href="https://echoserver.dev/">echoserver</a>
+          ${messages.productions}
         </p>
       </section>
       <section>
