@@ -23,17 +23,18 @@ a:hover {
 }
 @media (width <= 1163px) {
   body {
-    padding: 20px 0 40px 7.8%;
+    padding-top: 20px;
+    padding-bottom: 48px;
   }
 }
 
 @media (width <= 962px) {
   body {
-    padding: 20px 28px 40px 28px;
+    padding: 20px 28px 48px 28px;
   }
 }
 @media (width <= 410px) {
   body {
-    padding: 10px 14px 20px 14px;
+    padding: 10px 14px 48px 14px;
   }
 }

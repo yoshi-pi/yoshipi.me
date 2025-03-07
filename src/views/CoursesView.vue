@@ -61,6 +61,7 @@ useHead({
 
 <style scoped>
 h2 {
+  margin-top: 24px;
   margin-bottom: 16px;
 }
 .courses {

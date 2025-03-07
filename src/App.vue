@@ -74,7 +74,7 @@ footer {
   font-size: 0.9rem;
   color: rgba(255, 255, 255, 0.6);
   display: flex;
-  margin-top: 64px;
+  margin-top: 40px;
 }
 @media (width <= 1163px) {
   .logo {
