@@ -1,25 +1,10 @@
 <script setup lang="ts">
-import { getLocalizedCourses } from '@/utils/i18n'
-import type { FetchedCourse } from '@/utils/type'
 import { useHead } from '@unhead/vue'
-import { computed, ref } from 'vue'
-import { useRoute } from 'vue-router'
-
-const route = useRoute()
-const lang = computed(() => (route.params.lang as 'ja' | 'en' | '') || 'en')
-const fetchedCourses = ref<FetchedCourse[]>([])
-fetch('https://yoshipi.microcms.io/api/v1/courses', {
-  headers: {
-    'X-MICROCMS-API-KEY': 'M765Iy72TsTyeYTEsFruOHbuySRg13C5DEy6',
-  },
-})
-  .then((data) => data.json())
-  .then((json) => {
-    fetchedCourses.value = json.contents
-  })
-const courses = computed(() => getLocalizedCourses(lang.value, fetchedCourses.value))
+import { ref } from 'vue'
+import { useCoursesStore } from '@/stores/courses'
+const coursesStore = useCoursesStore()
 useHead({
-  title: courses.value.title,
+  title: coursesStore.courses.title,
 })
 const isLoaded = ref(false)
 function loaded() {
@@ -28,11 +13,11 @@ function loaded() {
 </script>
 <template>
   <main>
-    <h2>{{ courses.title }}</h2>
+    <h2>{{ coursesStore.courses.title }}</h2>
     <div v-if="!isLoaded" style="height: 800px"></div>
     <Transition name="fade-course">
       <div v-show="isLoaded" class="courses">
-        <div v-for="course in courses.list" :key="course.id" class="course-container">
+        <div v-for="course in coursesStore.courses.list" :key="course.id" class="course-container">
           <a :href="course.link">
             <div class="image-container">
               <img
