@@ -3,8 +3,12 @@ body {
   background-color: #303e4e;
   color: white;
   max-width: 800px;
-  padding: 60px 0 80px 15.6%;
+  padding-top: 60px;
+  padding-bottom: 80px;
+  margin: 0 auto;
+  line-height: 2;
 }
+h2,
 p {
   margin: 0;
 }

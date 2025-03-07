@@ -2,21 +2,20 @@
 import { computed } from 'vue'
 import { useRoute } from 'vue-router'
 import { useHead } from '@unhead/vue'
-import { getLocalizedMessages } from '@/utils/i18n'
 const route = useRoute()
-const lang = computed(() => (route.params.lang as 'ja' | 'en' | '') || 'en')
-const messages = computed(() => getLocalizedMessages(lang.value))
+const isJapanese = computed(() => route.params.lang === 'ja')
 useHead({
-  htmlAttrs: {
-    lang,
-  },
+  title: 'Yoshipi',
 })
 </script>
 
 <template>
   <main>
     <div class="profile-container">
-      <h1 class="profile-name">{{ messages.name }}</h1>
+      <h1 class="profile-name">
+        <template v-if="isJapanese">よしぴー(Yoshipi)</template>
+        <template v-else>Yoshipi</template>
+      </h1>
       <div class="profile-image-container">
         <img
           class="profile-image"
@@ -29,23 +28,82 @@ useHead({
     </div>
     <section>
       <h2>💻 Work</h2>
-      <p v-html="messages.work"></p>
+      <p>
+        <template v-if="isJapanese">
+          <a href="https://www.udemy.com/user/yoshipi/">Udemy</a
+          >でWeb系のプログラミングの講師をしています。受講をご希望の方は
+          <RouterLink :to="{ name: 'courses', params: { lang: $route.params.lang } }"
+            >Udemyコース一覧</RouterLink
+          >のリンクから登録していただければクーポンが適応されますのでぜひご活用ください。私自身がプログラミングを何度か挫折しそうになった経験があり、その経験を元にあの時一番欲しかったなと思う講座を作成するようにしています。<a
+            href="https://www.youtube.com/@yoshipi"
+            >YouTube</a
+          >にも講座の冒頭部分やオリジナルコンテンツを投稿しています。
+        </template>
+        <template v-else>
+          I am a <a href="https://www.udemy.com/user/yoshipi/">Udemy</a> instructor for web
+          programming courses, primarily for a Japanese audience. If you're interested in taking my
+          courses, you can register through the link to the
+          <RouterLink :to="{ name: 'courses', params: { lang: $route.params.lang } }"
+            >Udemy Courses</RouterLink
+          >, where a coupon will be applied. Having faced several setbacks in my own programming
+          journey, I create courses based on the experience of what I felt I needed most at the
+          time. I also post the introductory parts of my courses and original content on
+          <a href="https://www.youtube.com/@yoshipi">YouTube</a>.
+        </template>
+      </p>
     </section>
     <section>
       <h2>🎨 Productions</h2>
-      <p v-html="messages.productions"></p>
+      <p>
+        <template v-if="isJapanese"
+          ><a href="https://jsontocsvconv.com/">json to csv</a> /
+          <a href="https://echoserver.dev/">echoserver</a> /
+          <a href="https://www.amazon.co.jp/dp/B0DHX2BFZ6"
+            >インターバルタイマー(Alexa Skill)</a
+          ></template
+        >
+        <template v-else
+          ><a href="https://jsontocsvconv.com/">json to csv</a> /
+          <a href="https://echoserver.dev/">echoserver</a> /
+          <a href="https://www.amazon.com/dp/B0DHX2BFZ6">Interval Timer(Alexa Skill)</a></template
+        >
+      </p>
     </section>
     <section>
       <h2>🎤 Hobby</h2>
-      <p v-html="messages.hobby"></p>
+      <template v-if="isJapanese"
+        >散歩/旅行/サウナ/料理/カラオケ/お笑い/アニメ/カメラ(<a
+          href="https://www.instagram.com/yoshipigram2/"
+          >instagram</a
+        >)/麻雀/ポーカー</template
+      >
+      <template v-else
+        >Walking / Traveling / Sauna / Cooking / Karaoke / Comedy / Anime / Photography(<a
+          href="https://www.instagram.com/yoshipigram2/"
+          >instagram</a
+        >) / Mahjong / Poker</template
+      >
     </section>
     <section>
       <h2>✉️ Contact</h2>
-      <p v-html="messages.contact"></p>
+      <template v-if="isJapanese"
+        ><a href="https://x.com/__yoshipi__">X（Twitter）</a
+        >のDMを解放していますので、どうぞお気軽にご連絡ください。</template
+      >
+      <template v-else
+        ><a href="https://x.com/__yoshipi__">X (Twitter)</a> DM is open, so feel free to contact
+        me.</template
+      >
     </section>
     <section>
       <h2>🛋️ Location</h2>
-      <p v-html="messages.location"></p>
+      <template v-if="isJapanese"
+        >出身は関西で、現在は東京都内に在住しています。近くにお住まいの方は、ぜひカフェや飲みにでも気軽にお誘いください。</template
+      >
+      <template v-else
+        >I live in Tokyo. If you're in the area, feel free to invite me for a casual coffee or
+        drink!</template
+      >
     </section>
   </main>
 </template>
@@ -77,7 +135,6 @@ section {
 }
 h2 {
   font-size: 1.2rem;
-  margin-bottom: 8px;
 }
 @media (width <= 1163px) {
   .profile-container {

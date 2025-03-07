@@ -1,13 +1,46 @@
 <script setup lang="ts">
 import LogoComp from '@/components/LogoComp.vue'
 import { RouterView } from 'vue-router'
+import { useHead } from '@unhead/vue'
+import { useRoute } from 'vue-router'
+import { computed } from 'vue'
+import { getLocalizedCourses } from './utils/i18n'
+const route = useRoute()
+const lang = computed(() => (route.params.lang as 'ja' | 'en' | '') || 'en')
+const coursesTitle = computed(() => getLocalizedCourses(lang.value).title)
+useHead({
+  htmlAttrs: {
+    lang,
+  },
+  link: [
+    {
+      rel: 'canonical',
+      href: () => `https://yoshipi.me${lang.value === 'ja' ? '/ja' : ''}`,
+    },
+  ],
+})
 </script>
 
 <template>
   <header>
     <nav>
-      <LogoComp class="logo" />
-      <div><RouterLink to="/">en</RouterLink> | <RouterLink to="/ja">ja</RouterLink></div>
+      <RouterLink :to="{ name: 'home', params: { lang: $route.params.lang } }">
+        <LogoComp class="logo" />
+      </RouterLink>
+      <div>
+        <RouterLink :to="{ name: 'home', params: { lang: $route.params.lang } }" class="nav-item"
+          >Yoshipi</RouterLink
+        >
+        <RouterLink
+          :to="{ name: 'courses', params: { lang: $route.params.lang } }"
+          class="nav-item"
+          >{{ coursesTitle }}</RouterLink
+        >
+        <span class="lang">
+          <RouterLink :to="{ name: $route.name, params: { lang: '' } }">en</RouterLink> |
+          <RouterLink :to="{ name: $route.name, params: { lang: 'ja' } }">ja</RouterLink>
+        </span>
+      </div>
     </nav>
   </header>
   <RouterView />
@@ -22,7 +55,15 @@ nav {
   align-items: center;
   justify-content: space-between;
 }
-a {
+.nav-item {
+  color: white;
+  margin-right: 32px;
+  font-size: 16px;
+}
+.lang {
+  font-size: 14px;
+}
+.lang a {
   color: white;
 }
 .logo {
@@ -39,6 +80,11 @@ footer {
   .logo {
     width: 40px;
     height: 40px;
+  }
+}
+@media (width <= 440px) {
+  .nav-item {
+    margin-right: 16px;
   }
 }
 </style>

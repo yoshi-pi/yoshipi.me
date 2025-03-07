@@ -18,6 +18,11 @@ const router = createRouter({
         }
       },
     },
+    {
+      path: '/:lang?/courses',
+      name: 'courses',
+      component: () => import('../views/CoursesView.vue'),
+    },
   ],
 })
 
