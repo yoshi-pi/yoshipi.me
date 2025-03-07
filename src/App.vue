@@ -80,6 +80,14 @@ footer {
   display: flex;
   margin-top: 40px;
 }
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s ease;
+}
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
 @media (width <= 1163px) {
   .logo {
     width: 40px;

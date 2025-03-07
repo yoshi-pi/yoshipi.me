@@ -29,38 +29,41 @@ function loaded() {
 <template>
   <main>
     <h2>{{ courses.title }}</h2>
-    <div v-show="isLoaded" class="courses">
-      <div v-for="course in courses.list" :key="course.id" class="course-container">
-        <a :href="course.link">
-          <div class="image-container">
-            <img
-              :srcset="`${course.image.url}?fit=crop&w=360&h=202&fm=webp&dpr=1 1x,
+    <div v-if="!isLoaded" style="height: 800px"></div>
+    <Transition name="fade-course">
+      <div v-show="isLoaded" class="courses">
+        <div v-for="course in courses.list" :key="course.id" class="course-container">
+          <a :href="course.link">
+            <div class="image-container">
+              <img
+                :srcset="`${course.image.url}?fit=crop&w=360&h=202&fm=webp&dpr=1 1x,
                 ${course.image.url}?fit=crop&w=360&h=202&fm=webp&dpr=2 2x,
                 ${course.image.url}?fit=crop&w=360&h=202&fm=webp&dpr=3 3x`"
-              :src="`${course.image.url}?fit=crop&w=360&h=202&fm=webp`"
-              :alt="course.title"
-              @load="loaded"
-            />
-          </div>
-          <div
-            style="
-              display: flex;
-              justify-content: space-between;
-              align-items: center;
-              margin-top: 8px;
-            "
-          >
-            <p>{{ course.title }}</p>
-            <p style="margin-right: 8px; opacity: 0.8; font-size: 14px">
-              {{ course.durationHour }}
+                :src="`${course.image.url}?fit=crop&w=360&h=202&fm=webp`"
+                :alt="course.title"
+                @load="loaded"
+              />
+            </div>
+            <div
+              style="
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-top: 8px;
+              "
+            >
+              <p>{{ course.title }}</p>
+              <p style="margin-right: 8px; opacity: 0.8; font-size: 14px">
+                {{ course.durationHour }}
+              </p>
+            </div>
+            <p style="font-size: 14px; margin-top: 8px; text-decoration: none">
+              {{ course.description }}
             </p>
-          </div>
-          <p style="font-size: 14px; margin-top: 8px; text-decoration: none">
-            {{ course.description }}
-          </p>
-        </a>
+          </a>
+        </div>
       </div>
-    </div>
+    </Transition>
   </main>
 </template>
 
@@ -89,6 +92,12 @@ a {
 .image-container:hover img {
   transform: scale(1.05);
   filter: brightness(0.8);
+}
+.fade-course-enter-active {
+  transition: opacity 1s ease;
+}
+.fade-course-enter-from {
+  opacity: 0;
 }
 @media (width <= 610px) {
   .courses {
