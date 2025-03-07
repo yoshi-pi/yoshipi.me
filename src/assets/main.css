@@ -1,0 +1,35 @@
+body {
+  font-family: 'Inter', 'Noto Sans JP', sans-serif;
+  background-color: #303e4e;
+  color: white;
+  max-width: 800px;
+  padding: 60px 0 80px 15.6%;
+}
+p {
+  margin: 0;
+}
+a {
+  color: #70f5cc;
+  text-decoration-color: transparent;
+  text-decoration-skip-ink: none;
+  transition: text-decoration-color 0.3s;
+}
+a:hover {
+  text-decoration-color: #70f5cc;
+}
+@media (width <= 1163px) {
+  body {
+    padding: 20px 0 40px 7.8%;
+  }
+}
+
+@media (width <= 962px) {
+  body {
+    padding: 20px 28px 40px 28px;
+  }
+}
+@media (width <= 410px) {
+  body {
+    padding: 10px 14px 20px 14px;
+  }
+}
