@@ -29,7 +29,6 @@ function loaded() {
 <template>
   <main>
     <h2>{{ courses.title }}</h2>
-    <div v-if="!isLoaded" style="height: 800px"></div>
     <div v-show="isLoaded" class="courses">
       <div v-for="course in courses.list" :key="course.id" class="course-container">
         <a :href="course.link">
