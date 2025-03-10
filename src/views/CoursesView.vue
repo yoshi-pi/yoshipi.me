@@ -13,7 +13,10 @@ function loaded() {
 </script>
 <template>
   <main>
-    <h2>{{ coursesStore.courses.title }}</h2>
+    <header>
+      <h2>{{ coursesStore.courses.title }}</h2>
+      <p class="notice">*クーポンは自動で適用されます</p>
+    </header>
     <div v-if="!isLoaded" style="height: 800px"></div>
     <Transition name="fade-course">
       <div v-show="isLoaded" class="courses">
@@ -53,9 +56,12 @@ function loaded() {
 </template>
 
 <style scoped>
-h2 {
+header {
   margin-top: 24px;
-  margin-bottom: 16px;
+  margin-bottom: 20px;
+}
+.notice {
+  font-size: 12px;
 }
 .courses {
   display: grid;
@@ -88,10 +94,12 @@ a {
   .courses {
     grid-template-columns: repeat(1, 1fr);
   }
+  header {
+    margin-top: 20px;
+    margin-bottom: 16px;
+  }
   h2 {
     font-size: 20px;
-    margin-top: 12px;
-    margin-bottom: 8px;
   }
 }
 @media (width <= 410px) {

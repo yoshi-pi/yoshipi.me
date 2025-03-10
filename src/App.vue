@@ -65,7 +65,7 @@ nav {
   font-size: 16px;
 }
 .lang {
-  font-size: 14px;
+  font-size: 15px;
 }
 .lang a {
   color: white;
@@ -97,6 +97,10 @@ footer {
 @media (width <= 440px) {
   .nav-item {
     margin-right: 16px;
+    font-size: 14px;
+  }
+  .lang {
+    font-size: 13px;
   }
 }
 </style>
