@@ -96,7 +96,7 @@ a {
 }
 @media (width <= 410px) {
   .image-container {
-    margin: 0 -28px;
+    margin: 0 -14px;
   }
 }
 </style>
