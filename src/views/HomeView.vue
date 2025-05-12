@@ -72,16 +72,15 @@ useHead({
     <section>
       <h2>🎤 Hobby</h2>
       <template v-if="isJapanese"
-        >散歩/旅行/サウナ/料理/カラオケ/お笑い/アニメ/カメラ(<a
+        >散歩/旅行/サウナ/料理/カラオケ/お笑い/アニメ/<a
           href="https://www.instagram.com/yoshipigram/"
-          >instagram</a
-        >)/個人開発/麻雀/ポーカー</template
+          >カメラ</a
+        >/個人開発/麻雀/ポーカー</template
       >
       <template v-else
-        >Walking / Traveling / Sauna / Cooking / Karaoke / Comedy / Anime / Photography(<a
-          href="https://www.instagram.com/yoshipigram/"
-          >instagram</a
-        >) / Indie Development / Mahjong / Poker</template
+        >Walking / Traveling / Sauna / Cooking / Karaoke / Comedy / Anime /
+        <a href="https://www.instagram.com/yoshipigram/">Photography</a> / Indie Development /
+        Mahjong / Poker</template
       >
     </section>
     <section>
