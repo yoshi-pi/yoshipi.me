@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
+import { onTriggerScroll } from './utils'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -24,6 +25,17 @@ const router = createRouter({
       component: () => import('../views/CoursesView.vue'),
     },
   ],
+  scrollBehavior(to, from, savedPosition) {
+    return new Promise((resolve) => {
+      onTriggerScroll(() => {
+        if (savedPosition) {
+          resolve(savedPosition)
+        } else {
+          resolve({ top: 0 })
+        }
+      })
+    })
+  },
 })
 
 export default router

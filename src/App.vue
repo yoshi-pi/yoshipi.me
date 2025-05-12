@@ -5,6 +5,7 @@ import { useHead } from '@unhead/vue'
 import { useRoute } from 'vue-router'
 import { computed } from 'vue'
 import { getLocalizedCourses } from './utils/i18n'
+import { triggerScroll } from '@/router/utils'
 const route = useRoute()
 const lang = computed(() => (route.params.lang as 'ja' | 'en' | '') || 'en')
 const coursesTitle = computed(() => getLocalizedCourses(lang.value).title)
@@ -44,7 +45,7 @@ useHead({
     </nav>
   </header>
   <RouterView v-slot="{ Component }">
-    <transition name="fade" mode="out-in">
+    <transition name="fade" mode="out-in" @before-enter="triggerScroll">
       <component :is="Component" />
     </transition>
   </RouterView>
