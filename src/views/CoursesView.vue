@@ -15,7 +15,7 @@ function loaded() {
   <main>
     <header>
       <h2>{{ coursesStore.courses.title }}</h2>
-      <p class="notice">*クーポンは自動で適用されます</p>
+      <p class="notice">{{ coursesStore.courses.notice }}</p>
     </header>
     <div v-if="!isLoaded" style="height: 800px"></div>
     <Transition name="fade-course">

@@ -3,6 +3,7 @@ export function getLocalizedCourses(lang: 'ja' | 'en', fetchedCourses?: FetchedC
   const courses = {
     en: {
       title: 'Udemy Courses',
+      notice: 'Note: The coupon will be applied automatically',
       list: fetchedCourses?.map((fetchedCourse) => {
         console.log(fetchedCourse.titleEnglish)
         return {
@@ -19,6 +20,7 @@ export function getLocalizedCourses(lang: 'ja' | 'en', fetchedCourses?: FetchedC
     },
     ja: {
       title: 'Udemyコース一覧',
+      notice: '*クーポンは自動で適用されます',
       list: fetchedCourses?.map((fetchedCourse) => {
         return {
           id: fetchedCourse.id,
