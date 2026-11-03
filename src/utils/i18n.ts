@@ -1,4 +1,5 @@
 import type { FetchedCourse } from './type'
+import { withMonthlyCoupon } from './coupon'
 export function getLocalizedCourses(lang: 'ja' | 'en', fetchedCourses?: FetchedCourse[]) {
   const courses = {
     en: {
@@ -14,7 +15,7 @@ export function getLocalizedCourses(lang: 'ja' | 'en', fetchedCourses?: FetchedC
           image: {
             url: fetchedCourse.image.url,
           },
-          link: fetchedCourse.link,
+          link: withMonthlyCoupon(fetchedCourse.link),
         }
       }),
     },
@@ -30,7 +31,7 @@ export function getLocalizedCourses(lang: 'ja' | 'en', fetchedCourses?: FetchedC
           image: {
             url: fetchedCourse.image.url,
           },
-          link: fetchedCourse.link,
+          link: withMonthlyCoupon(fetchedCourse.link),
         }
       }),
     },
